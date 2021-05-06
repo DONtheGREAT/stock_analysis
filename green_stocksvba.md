@@ -30,7 +30,7 @@ Sub DQAnalysis()
         
         End If
         
-        If Cells(i, 1).Value = "DQ" And Cells(i - 1, 1).Value <> "DQ" Then
+        If Cells(i - 1, 1).Value <> "DQ" And Cells(i, 1).Value = "DQ" Then
     
             startingPrice = Cells(i, 6).Value
         
