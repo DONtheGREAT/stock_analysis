@@ -58,7 +58,10 @@ Sub AllStocksAnalysis()
 
     Worksheets("All Stocks Analysis").Activate
     
-        Range("A1").Value = "All Stocks(2018)"
+    
+    yearValue = InputBox("What year would you like to run the analysis on?")
+    
+        Range("A1").Value = "All Stocks(" + yearValue + ")"
     
         Cells(3, 1).Value = "Ticker"
         Cells(3, 2).Value = "Total Daily Volume"
@@ -81,7 +84,7 @@ Sub AllStocksAnalysis()
     Dim startingPrice As Single
     Dim endingPrice As Single
     
-    Worksheets("2018").Activate
+    Worksheets(yearValue).Activate
     
     RowCount = Cells(Rows.Count, "A").End(xlUp).Row
     
@@ -90,7 +93,7 @@ Sub AllStocksAnalysis()
             ticker = tickers(i)
             totalVolume = 0
             
-            Worksheets("2018").Activate
+            Worksheets(yearValue).Activate
             
             For j = 2 To RowCount
             
@@ -129,7 +132,7 @@ Sub formatAllStocksAnalysisTable()
     Worksheets("All Stocks Analysis").Activate
     Range("A3:C3").Font.Bold = True
     Range("A3:C3").Borders(xlEdgeBottom).LineStyle = xlContinuous
-    Range("B4:B15").NumberFormat = "#,##0"
+    Range("B4:B15").NumberFormat = "$#,##0"
     Range("C4:C15").NumberFormat = "0.0%"
     Columns("B").AutoFit
     dataRowStart = 4
@@ -150,3 +153,12 @@ Sub formatAllStocksAnalysisTable()
 
     Next i
 End Sub
+
+Sub ClearWorksheet()
+    
+    Cells.Clear
+    
+End Sub
+
+    
+   
