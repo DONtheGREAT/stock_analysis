@@ -58,8 +58,12 @@ Sub AllStocksAnalysis()
 
     Worksheets("All Stocks Analysis").Activate
     
+    Dim startTime As Single
+    Dim endTime As Single
     
     yearValue = InputBox("What year would you like to run the analysis on?")
+    
+        startTime = Timer
     
         Range("A1").Value = "All Stocks(" + yearValue + ")"
     
@@ -123,6 +127,9 @@ Sub AllStocksAnalysis()
             Cells(4 + i, 3).Value = (endingPrice / startingPrice) - 1
             
         Next i
+        
+        endTime = Timer
+        MsgBox "This code ran in " & (endTime - startTime) & " seconds for the year " & (yearValue) & ""
     
 End Sub
 
